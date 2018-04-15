@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -20,13 +22,29 @@ import java.util.Random;
      ArrayList<Integer> idImageList;
      ImageView imageFirst, imageSecond;
      int idImageFirst, idImageSecond;
+     boolean isImageSecondClick = true;
      @Override
      protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         define();
-
         newGame();
+     }
+
+     @Override
+     public boolean onCreateOptionsMenu(Menu menu) {
+         getMenuInflater().inflate(R.menu.new_game, menu);
+         return super.onCreateOptionsMenu(menu);
+
+     }
+
+     @Override
+     public boolean onOptionsItemSelected(MenuItem item) {
+         if (item.getItemId()  == R.id.btn_reload) {
+             newGame();
+
+         }
+         return super.onOptionsItemSelected(item);
      }
 
      private void showPopupSelectImage() {
@@ -41,12 +59,15 @@ import java.util.Random;
             int idImage = data.getIntExtra("idImageSelected", 0);
             imageSecond.setImageResource(idImage);
             int delayMillis  = 2000;
+            isImageSecondClick = false;
             if (idImage == idImageFirst) {
                 Toast.makeText(this, R.string.you_are_good, Toast.LENGTH_SHORT).show();
+
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        isImageSecondClick = true;
                         newGame();
                     }
                 }, delayMillis);
@@ -58,6 +79,7 @@ import java.util.Random;
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        isImageSecondClick = true;
                         showPopupSelectImage();
                     }
                 },delayMillis);
@@ -78,11 +100,12 @@ import java.util.Random;
 
          imageFirst.setImageResource(idImageFirst);
          imageSecond.setImageResource(idImageSecond);
-
          imageSecond.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 showPopupSelectImage();
+                 if (isImageSecondClick) {
+                     showPopupSelectImage();
+                 }
              }
          });
      }
