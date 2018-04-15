@@ -23,6 +23,7 @@ import java.util.Random;
      ImageView imageFirst, imageSecond;
      int idImageFirst, idImageSecond;
      boolean isImageSecondClick = true;
+
      @Override
      protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +41,8 @@ import java.util.Random;
 
      @Override
      public boolean onOptionsItemSelected(MenuItem item) {
-         if (item.getItemId()  == R.id.btn_reload) {
+         if (item.getItemId() == R.id.btn_reload && isImageSecondClick) {
              newGame();
-
          }
          return super.onOptionsItemSelected(item);
      }
@@ -80,7 +80,7 @@ import java.util.Random;
                     @Override
                     public void run() {
                         isImageSecondClick = true;
-                        showPopupSelectImage();
+                            showPopupSelectImage();
                     }
                 },delayMillis);
 
