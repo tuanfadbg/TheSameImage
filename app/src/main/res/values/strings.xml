@@ -1,4 +1,31 @@
 <resources>
     <string name="app_name">The Same Image</string>
     <string name="select_the_image_below">Select the image below</string>
+    <string name="you_are_good">You are good</string>
+    <string name="you_chose_wrong">You chose wrong</string>
+    <string-array name="list_image">
+        <item>angrybird_1</item>
+        <item>angrybird_2</item>
+        <item>angrybird_3</item>
+        <item>angrybird_4</item>
+        <item>angrybird_5</item>
+        <item>angrybird_6</item>
+        <item>angrybird_7</item>
+        <item>angrybird_8</item>
+        <item>angrybird_9</item>
+        <item>angrybird_10</item>
+        <item>angrybird_11</item>
+        <item>angrybird_12</item>
+        <item>angrybird_13</item>
+        <item>angrybird_14</item>
+        <item>angrybird_15</item>
+        <item>angrybird_16</item>
+        <item>angrybird_17</item>
+        <item>angrybird_18</item>
+        <item>angrybird_19</item>
+        <item>angrybird_20</item>
+        <item>angrybird_21</item>
+        <item>angrybird_22</item>
+        <item>angrybird_23</item>
+    </string-array>
 </resources>
