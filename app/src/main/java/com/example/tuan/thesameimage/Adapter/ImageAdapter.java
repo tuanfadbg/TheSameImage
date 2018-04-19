@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Adapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -55,8 +57,10 @@ public class ImageAdapter extends BaseAdapter {
         else  {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-
         viewHolder.image.setImageResource(idImageList.get(position));
+
+        Animation animation = AnimationUtils.loadAnimation(context, R.anim.grid_image);
+        convertView.startAnimation(animation);
         return convertView;
     }
 }
